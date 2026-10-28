@@ -7,6 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="**\GestorTareas.Tests\**" />
+    <Compile Remove="**\*Tests.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\GestorTareas.Core\GestorTareas.Core.csproj" />
   </ItemGroup>
 </Project>

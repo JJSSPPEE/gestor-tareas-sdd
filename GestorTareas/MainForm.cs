@@ -6,7 +6,7 @@ namespace GestorTareas;
 public class MainForm : Form
 {
     private readonly ServicioTareas _servicio = new();
-
+    private readonly Label lblPendientes = new();
     private readonly TextBox txtTitulo = new();
     private readonly ComboBox cmbPrioridad = new();
     private readonly Button btnAgregar = new();
@@ -48,11 +48,13 @@ public class MainForm : Form
         btnEliminar.Text = "Eliminar";
         btnEliminar.SetBounds(125, 435, 100, 30);
         btnEliminar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        lblPendientes.SetBounds(240, 442, 300, 20);
+        lblPendientes.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 
         Controls.AddRange(new Control[]
         {
             lblTitulo, txtTitulo, lblPrioridad, cmbPrioridad, btnAgregar,
-            dgvTareas, btnCompletar, btnEliminar
+            dgvTareas, btnCompletar, btnEliminar, lblPendientes
         });
 
         btnAgregar.Click += BtnAgregar_Click;
@@ -75,6 +77,7 @@ public class MainForm : Form
         {
             MessageBox.Show(ex.Message, "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+       
     }
 
     private void BtnCompletar_Click(object? sender, EventArgs e)
@@ -121,5 +124,6 @@ public class MainForm : Form
                 Estado = t.Completada ? "Completada" : "Pendiente"
             })
             .ToList();
+        lblPendientes.Text = $"Pendientes: {_servicio.ContarPendientes()}";
     }
 }

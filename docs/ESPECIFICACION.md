@@ -9,6 +9,7 @@
 | RF-02 | Listar todas las tareas con su Id, título, prioridad y estado. |
 | RF-03 | Marcar una tarea como completada. |
 | RF-04 | Eliminar una tarea existente. |
+| RF-05 | Mostrar la cantidad de tareas pendientes. |
 
 ## 2. Especificación (contratos, criterios y restricciones)
 **Reglas de negocio**
@@ -23,6 +24,7 @@
 - CA-03: al completar una tarea, su estado cambia a "Completada".
 - CA-04: al eliminar una tarea (con confirmación), desaparece de la lista.
 - CA-05: eliminar o completar un Id inexistente lanza `KeyNotFoundException`.
+- CA-06: el contador solo cuenta las tareas no completadas.
 
 **Restricciones**
 - Lenguaje C#, Windows Forms, Visual Studio 2026.

@@ -43,6 +43,11 @@ public class ServicioTareas
         _tareas.Remove(Buscar(id));
     }
 
+    // RF-05: Contar tareas pendientes
+    public int ContarPendientes()
+    {
+        return _tareas.Count(t => !t.Completada);
+    }
     private Tarea Buscar(int id)
     {
         return _tareas.FirstOrDefault(t => t.Id == id)

@@ -64,4 +64,14 @@ public class ServicioTareasTests
 
         Assert.Throws<KeyNotFoundException>(() => servicio.Eliminar(99));
     }
+    [Fact]
+    public void ContarPendientes_CuentaSoloLasNoCompletadas()
+    {
+        var servicio = new ServicioTareas();
+        var t1 = servicio.Agregar("Tarea 1", Prioridad.Alta);
+        servicio.Agregar("Tarea 2", Prioridad.Media);
+        servicio.Completar(t1.Id);
+
+        Assert.Equal(1, servicio.ContarPendientes());
+    }
 }
